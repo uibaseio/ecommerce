@@ -11,9 +11,6 @@ module.exports = {
     extend: {
       colors: colors.indigo,
     },
-    fontFamily: {
-      sans: ["'Karla'", 'sans-serif'],
-    },
   },
   plugins: [forms],
 };

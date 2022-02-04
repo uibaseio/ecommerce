@@ -4,6 +4,12 @@
 
 @layer base {
   body {
-    @apply antialiased;
+    @apply antialiased text-gray-800;
+  }
+}
+
+@layer components {
+  .icon-button {
+    @apply flex items-center justify-center w-10 h-10;
   }
 }
