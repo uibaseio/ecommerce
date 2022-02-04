@@ -6,7 +6,10 @@ const MobileNavigationButton = ({ open }: MobileNavigationButtonProps) => {
   const iconSize = 20;
 
   return (
-    <Popover.Button className="relative -left-2 icon-button">
+    <Popover.Button
+      className="relative -left-2 icon-button"
+      aria-label={!open ? 'Open mobile navigation' : 'Close mobile navigation'}
+    >
       {!open ? (
         <IoMenuOutline size={iconSize} />
       ) : (

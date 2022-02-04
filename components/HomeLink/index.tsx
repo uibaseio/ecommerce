@@ -4,7 +4,7 @@ import { IoLogoApple } from 'react-icons/io5';
 const HomeLink = () => (
   <div className="flex justify-center lg:justify-start">
     <Link href="/">
-      <a>
+      <a aria-label="Home">
         <IoLogoApple size={24} />
       </a>
     </Link>
