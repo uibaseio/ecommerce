@@ -1,16 +1,12 @@
-import { useCart } from '../../hooks';
+import type CartTableBodyProps from './CartTableBodyProps';
 import CartTableRow from '../CartTableRow';
 
-const CartTableBody = () => {
-  const { items } = useCart();
-
-  return (
-    <ul>
-      {items.map((item) => (
-        <CartTableRow item={item} key={item.product.id} />
-      ))}
-    </ul>
-  );
-};
+const CartTableBody = ({ items }: CartTableBodyProps) => (
+  <ul>
+    {items.map((item) => (
+      <CartTableRow item={item} key={item.product.id} />
+    ))}
+  </ul>
+);
 
 export default CartTableBody;
