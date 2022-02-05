@@ -31,6 +31,7 @@ const CartItemQuantitySelector = ({ item }: CartItemQuantitySelectorProps) => {
             setQuantityInputValue(quantity.toString())
           )
         }
+        aria-label={`Decrement ${item.product.title} quantity`}
       >
         <IoRemoveOutline size={iconSize} />
       </button>
@@ -43,6 +44,7 @@ const CartItemQuantitySelector = ({ item }: CartItemQuantitySelectorProps) => {
           if (!quantityInputIntegerValue)
             setQuantityInputValue(item.quantity.toString());
         }}
+        aria-label={`${item.product.title} quantity`}
       />
       <button
         className="icon-button"
@@ -52,6 +54,7 @@ const CartItemQuantitySelector = ({ item }: CartItemQuantitySelectorProps) => {
             setQuantityInputValue(quantity.toString())
           )
         }
+        aria-label={`Increment ${item.product.title} quantity`}
       >
         <IoAddOutline size={iconSize} />
       </button>

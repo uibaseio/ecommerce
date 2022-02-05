@@ -10,6 +10,7 @@ const CartRemoveItemButton = ({ item }: CartRemoveItemButtonProps) => {
       className="absolute top-0 bottom-0 text-red-600 lg:static -right-2 icon-button"
       type="button"
       onClick={() => handleRemoveItem(item)}
+      aria-label={`Remove ${item.product.title} from cart`}
     >
       <IoTrashOutline size={20} />
     </button>
