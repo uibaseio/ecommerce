@@ -1,6 +1,13 @@
 export { default as Button } from './Button';
 export { default as CartLink } from './CartLink';
 export { default as CartProvider } from './CartProvider';
+export { default as CartRemoveItemButton } from './CartRemoveItemButton';
+export { default as CartTable } from './CartTable';
+export { default as CartTableBody } from './CartTableBody';
+export { default as CartTableColumn } from './CartTableColumn';
+export { default as CardTableHeader } from './CartTableHeader';
+export { default as CartTableHeaderColumn } from './CartTableHeaderColumn';
+export { default as CartTableRow } from './CartTableRow';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as HomeLink } from './HomeLink';

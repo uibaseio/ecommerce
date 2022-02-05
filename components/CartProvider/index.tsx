@@ -78,6 +78,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
   return (
     <CartContext.Provider
       value={{
+        items,
         handleAddToCart,
         quantity,
       }}

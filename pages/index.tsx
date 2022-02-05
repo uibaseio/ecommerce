@@ -11,6 +11,7 @@ const Home: NextPage<HomeProps> = ({ products }) => (
       <title>Home</title>
       <meta name="description" content="Home" />
     </Head>
+    <h1>Products</h1>
     <ProductList products={products} />
   </>
 );
