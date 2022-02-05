@@ -14,7 +14,7 @@ const MobileNavigation = ({ items }: MobileNavigationProps) => (
         >
           <ul className="container divide-y">
             {items.map((item) => (
-              <MobileNavigationItem key={item.title} item={item} />
+              <MobileNavigationItem item={item} key={item.title} />
             ))}
           </ul>
         </Popover.Panel>

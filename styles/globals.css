@@ -6,6 +6,15 @@
   body {
     @apply antialiased text-gray-800 mt-[3.5625rem];
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
 }
 
 @layer components {

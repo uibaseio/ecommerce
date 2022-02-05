@@ -9,7 +9,9 @@ module.exports = {
       padding: '1rem',
     },
     extend: {
-      colors: colors.indigo,
+      colors: {
+        primary: colors.indigo,
+      },
     },
   },
   plugins: [forms],
