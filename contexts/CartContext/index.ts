@@ -6,6 +6,9 @@ const CartContext = createContext<CartContextValue>({
   handleAddToCart: () => {},
   quantity: 0,
   handleRemoveItem: () => {},
+  handleDecrementItemQuantity: () => {},
+  handleUpdateItemQuantity: () => {},
+  handleIncrementItemQuantity: () => {},
 });
 
 export default CartContext;

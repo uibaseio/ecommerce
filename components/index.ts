@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as CartItemQuantitySelector } from './CartItemQuantitySelector';
 export { default as CartLink } from './CartLink';
 export { default as CartProvider } from './CartProvider';
 export { default as CartRemoveItemButton } from './CartRemoveItemButton';

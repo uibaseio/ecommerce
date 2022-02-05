@@ -87,6 +87,59 @@ const CartProvider = ({ children }: CartProviderProps) => {
     toast.success(`Removed ${item.product.title} from cart`);
   };
 
+  const handleDecrementItemQuantity = async (
+    item: CartItem,
+    callback: (quantity: number) => void
+  ) => {
+    if (item.quantity === 1) return handleRemoveItem(item);
+
+    const newItems = [...items];
+    const itemIndex = newItems.findIndex(
+      (newItem) => newItem.product.id === item.product.id
+    );
+    const newQuantity = newItems[itemIndex].quantity - 1;
+
+    newItems[itemIndex].quantity = newQuantity;
+
+    await setDoc(doc(firestore, 'carts', cartId), {
+      items: newItems,
+    });
+
+    callback(newQuantity);
+  };
+
+  const handleUpdateItemQuantity = async (item: CartItem, quantity: number) => {
+    const newItems = [...items];
+    const itemIndex = newItems.findIndex(
+      (newItem) => newItem.product.id === item.product.id
+    );
+
+    newItems[itemIndex].quantity = newItems[itemIndex].quantity = quantity;
+
+    await setDoc(doc(firestore, 'carts', cartId), {
+      items: newItems,
+    });
+  };
+
+  const handleIncrementItemQuantity = async (
+    item: CartItem,
+    callback: (quantity: number) => void
+  ) => {
+    const newItems = [...items];
+    const itemIndex = newItems.findIndex(
+      (newItem) => newItem.product.id === item.product.id
+    );
+    const newQuantity = newItems[itemIndex].quantity + 1;
+
+    newItems[itemIndex].quantity = newQuantity;
+
+    await setDoc(doc(firestore, 'carts', cartId), {
+      items: newItems,
+    });
+
+    callback(newQuantity);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -94,6 +147,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
         handleAddToCart,
         quantity,
         handleRemoveItem,
+        handleDecrementItemQuantity,
+        handleUpdateItemQuantity,
+        handleIncrementItemQuantity,
       }}
     >
       {children}
