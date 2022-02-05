@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { parseCookies, setCookie } from 'nookies';
 import { addDoc, collection, getDoc, doc, setDoc } from 'firebase/firestore';
+import { toast } from 'react-hot-toast';
 import type ProductListItemProps from './ProductListItemProps';
 import { firestore } from '../../lib/firebase';
 import type { Cart } from '../../types';
@@ -27,6 +28,8 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
         maxAge: 30 * 24 * 60 * 60,
         path: '/',
       });
+
+      toast.success(`Added ${product.title} to cart`);
     } else {
       const cartRef = doc(firestore, 'carts', cartId);
       const cartSnap = await getDoc(cartRef);
@@ -47,7 +50,9 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
         await setDoc(doc(firestore, 'carts', cartId), {
           items: newItems,
         });
-      } else
+
+        toast.success(`Added ${product.title} to cart`);
+      } else {
         await setDoc(doc(firestore, 'carts', cartId), {
           items: [
             ...items,
@@ -57,6 +62,9 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
             },
           ],
         });
+
+        toast.success(`Added ${product.title} to cart`);
+      }
     }
   };
 

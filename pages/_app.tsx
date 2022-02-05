@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
 import '../styles/globals.css';
 import { Layout } from '../components';
 
@@ -11,6 +12,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
     <Layout>
       <Component {...pageProps} />
     </Layout>
+    <Toaster />
   </>
 );
 

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply antialiased text-gray-800 mt-[3.5625rem];
+    @apply mt-[3.5625rem] antialiased text-gray-800;
   }
 
   h1,
