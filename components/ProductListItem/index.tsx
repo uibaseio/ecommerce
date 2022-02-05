@@ -1,72 +1,11 @@
 import Image from 'next/image';
-import { parseCookies, setCookie } from 'nookies';
-import { addDoc, collection, getDoc, doc, setDoc } from 'firebase/firestore';
-import { toast } from 'react-hot-toast';
 import type ProductListItemProps from './ProductListItemProps';
-import { firestore } from '../../lib/firebase';
-import type { Cart } from '../../types';
+import { useCart } from '../../hooks';
 import { formatPrice } from '../../utils';
 import Button from '../Button';
 
 const ProductListItem = ({ product }: ProductListItemProps) => {
-  const handleAddToCart = async () => {
-    const { cartId } = parseCookies();
-
-    if (!cartId) {
-      const cartRef = await addDoc(collection(firestore, 'carts'), {
-        items: [
-          {
-            product,
-            quantity: 1,
-          },
-        ],
-      });
-
-      const cartSnap = await getDoc(cartRef);
-
-      setCookie(null, 'cartId', cartSnap.id, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: '/',
-      });
-
-      toast.success(`Added ${product.title} to cart`);
-    } else {
-      const cartRef = doc(firestore, 'carts', cartId);
-      const cartSnap = await getDoc(cartRef);
-      const cart = cartSnap.data() as Cart;
-      const { items } = cart;
-      const cartIncludesItem = items
-        .map((item) => item.product.id)
-        .includes(product.id);
-
-      if (cartIncludesItem) {
-        const newItems = [...items];
-        const itemIndex = newItems.findIndex(
-          (newItem) => newItem.product.id === product.id
-        );
-
-        newItems[itemIndex].quantity = newItems[itemIndex].quantity + 1;
-
-        await setDoc(doc(firestore, 'carts', cartId), {
-          items: newItems,
-        });
-
-        toast.success(`Added ${product.title} to cart`);
-      } else {
-        await setDoc(doc(firestore, 'carts', cartId), {
-          items: [
-            ...items,
-            {
-              product,
-              quantity: 1,
-            },
-          ],
-        });
-
-        toast.success(`Added ${product.title} to cart`);
-      }
-    }
-  };
+  const { handleAddToCart } = useCart();
 
   return (
     <li className="p-4 space-y-4 border rounded-lg">
@@ -83,7 +22,7 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
         <h2>{product.title}</h2>
         <p className="text-sm text-gray-500">{formatPrice(product.price)}</p>
       </div>
-      <Button onClick={handleAddToCart}>Add to Cart</Button>
+      <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
     </li>
   );
 };
