@@ -17,7 +17,7 @@ const CartTableRow = ({ item }: CartTableRowProps) => (
       content={formatPrice(item.product.price * item.quantity)}
     />
     <CartTableColumn title="Remove">
-      <CartRemoveItemButton />
+      <CartRemoveItemButton item={item} />
     </CartTableColumn>
   </li>
 );

@@ -5,6 +5,7 @@ const CartContext = createContext<CartContextValue>({
   items: [],
   handleAddToCart: () => {},
   quantity: 0,
+  handleRemoveItem: () => {},
 });
 
 export default CartContext;

@@ -5,7 +5,7 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { addDoc, collection, getDoc, doc, setDoc } from 'firebase/firestore';
 import { toast } from 'react-hot-toast';
 import type CartProviderProps from './CartProviderProps';
-import type { Cart, Product } from '../../types';
+import type { Cart, Product, CartItem } from '../../types';
 import { firestore } from '../../lib/firebase';
 import { CartContext } from '../../contexts';
 
@@ -75,12 +75,25 @@ const CartProvider = ({ children }: CartProviderProps) => {
     .map((item) => item.quantity)
     .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
+  const handleRemoveItem = async (item: CartItem) => {
+    const newItems = [...items].filter(
+      (newItem) => newItem.product.id !== item.product.id
+    );
+
+    await setDoc(doc(firestore, 'carts', cartId), {
+      items: newItems,
+    });
+
+    toast.success(`Removed ${item.product.title} from cart`);
+  };
+
   return (
     <CartContext.Provider
       value={{
         items,
         handleAddToCart,
         quantity,
+        handleRemoveItem,
       }}
     >
       {children}
