@@ -1,6 +1,7 @@
 import type { CartItem, Product } from '../../types';
 
 type CartContextValue = {
+  loading: boolean;
   items: CartItem[];
   handleAddToCart: (product: Product) => void;
   quantity: number;

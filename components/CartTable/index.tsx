@@ -3,7 +3,9 @@ import CartTableHeader from '../CartTableHeader';
 import CartTableBody from '../CartTableBody';
 
 const CartTable = () => {
-  const { items } = useCart();
+  const { loading, items } = useCart();
+
+  if (loading) return null;
 
   if (items.length === 0)
     return <p className="text-gray-500">Your cart is empty</p>;

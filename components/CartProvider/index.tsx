@@ -17,7 +17,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
     if (cartId) setCartRef(doc(firestore, 'carts', cartId));
   }, [cartId]);
 
-  const [value] = useDocumentData(cartRef);
+  const [value, loading] = useDocumentData(cartRef);
   const cart = value as Cart;
   const items = cart?.items || [];
 
@@ -143,6 +143,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
   return (
     <CartContext.Provider
       value={{
+        loading,
         items,
         handleAddToCart,
         quantity,
