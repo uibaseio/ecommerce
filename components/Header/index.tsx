@@ -31,7 +31,7 @@ const navigationItems = [
 ];
 
 const Header = () => (
-  <header className="fixed top-0 left-0 right-0 bg-white border-b">
+  <header className="fixed top-0 left-0 right-0 z-10 bg-white border-b">
     <div className="container grid items-center grid-cols-[1fr,2fr,1fr] py-2">
       <MobileNavigation items={navigationItems} />
       <HomeLink />
