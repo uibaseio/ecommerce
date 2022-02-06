@@ -19,6 +19,7 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
         />
       </div>
       <div>
+        <p className="text-xs text-gray-500">{product.category}</p>
         <h2>{product.title}</h2>
         <p className="text-sm text-gray-500">{formatPrice(product.price)}</p>
         {product.inventory ? (

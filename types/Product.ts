@@ -6,6 +6,7 @@ type Product = {
   price: number;
   thumbnails: Thumbnail[];
   inventory: number;
+  category: string;
 };
 
 export default Product;
