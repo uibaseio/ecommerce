@@ -42,6 +42,12 @@ const CartItemQuantitySelector = ({ item }: CartItemQuantitySelectorProps) => {
         value={quantityInputValue}
         onChange={(event) => setQuantityInputValue(event.target.value)}
         onBlur={() => {
+          if (quantityInputIntegerValue < 0) {
+            setQuantityInputValue('1');
+
+            return toast.error(`Quantity cannot be negative`);
+          }
+
           if (quantityInputIntegerValue > item.product.inventory) {
             setQuantityInputValue(item.product.inventory.toString());
 
