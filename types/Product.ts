@@ -5,6 +5,7 @@ type Product = {
   title: string;
   price: number;
   thumbnails: Thumbnail[];
+  inventory: number;
 };
 
 export default Product;

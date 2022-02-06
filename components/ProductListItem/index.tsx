@@ -21,8 +21,18 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
       <div>
         <h2>{product.title}</h2>
         <p className="text-sm text-gray-500">{formatPrice(product.price)}</p>
+        {product.inventory ? (
+          <p className="text-sm text-green-600">{`${product.inventory} in stock`}</p>
+        ) : (
+          <p className="text-sm text-red-600">Out of stock</p>
+        )}
       </div>
-      <Button onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+      <Button
+        onClick={() => handleAddToCart(product)}
+        disabled={!product.inventory}
+      >
+        Add to Cart
+      </Button>
     </li>
   );
 };

@@ -48,6 +48,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
           (newItem) => newItem.product.id === product.id
         );
 
+        if (newItems[itemIndex].quantity === product.inventory)
+          return toast.error(`Reached maximum quantity`);
+
         newItems[itemIndex].quantity = newItems[itemIndex].quantity + 1;
 
         await setDoc(doc(firestore, 'carts', cartId), {
@@ -125,6 +128,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
     item: CartItem,
     callback: (quantity: number) => void
   ) => {
+    if (item.quantity === item.product.inventory)
+      return toast.error(`Reached maximum quantity`);
+
     const newItems = [...items];
     const itemIndex = newItems.findIndex(
       (newItem) => newItem.product.id === item.product.id
