@@ -146,6 +146,14 @@ const CartProvider = ({ children }: CartProviderProps) => {
     callback(newQuantity);
   };
 
+  const subtotal = items
+    .map((item) => item.quantity * item.product.price)
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+
+  const vat = subtotal * 0.2;
+
+  const total = subtotal + vat;
+
   return (
     <CartContext.Provider
       value={{
@@ -157,6 +165,9 @@ const CartProvider = ({ children }: CartProviderProps) => {
         handleDecrementItemQuantity,
         handleUpdateItemQuantity,
         handleIncrementItemQuantity,
+        subtotal,
+        vat,
+        total,
       }}
     >
       {children}

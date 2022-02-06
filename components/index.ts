@@ -6,6 +6,8 @@ export { default as CartRemoveItemButton } from './CartRemoveItemButton';
 export { default as CartTable } from './CartTable';
 export { default as CartTableBody } from './CartTableBody';
 export { default as CartTableColumn } from './CartTableColumn';
+export { default as CartTableFooter } from './CartTableFooter';
+export { default as CartTableFooterRow } from './CartTableFooterRow';
 export { default as CardTableHeader } from './CartTableHeader';
 export { default as CartTableHeaderColumn } from './CartTableHeaderColumn';
 export { default as CartTableRow } from './CartTableRow';

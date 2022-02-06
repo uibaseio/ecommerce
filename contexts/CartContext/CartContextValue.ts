@@ -15,6 +15,9 @@ type CartContextValue = {
     item: CartItem,
     callback: (quantity: number) => void
   ) => void;
+  subtotal: number;
+  vat: number;
+  total: number;
 };
 
 export default CartContextValue;

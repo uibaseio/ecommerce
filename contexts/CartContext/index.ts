@@ -10,6 +10,9 @@ const CartContext = createContext<CartContextValue>({
   handleDecrementItemQuantity: () => {},
   handleUpdateItemQuantity: () => {},
   handleIncrementItemQuantity: () => {},
+  subtotal: 0,
+  vat: 0,
+  total: 0,
 });
 
 export default CartContext;
