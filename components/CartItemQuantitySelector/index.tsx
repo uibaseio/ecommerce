@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { IoRemoveOutline, IoAddOutline } from 'react-icons/io5';
+import { toast } from 'react-hot-toast';
 import type CartItemQuantitySelectorProps from './CartItemQuantitySelectorProps';
 import { useCart } from '../../hooks';
 
@@ -41,8 +42,14 @@ const CartItemQuantitySelector = ({ item }: CartItemQuantitySelectorProps) => {
         value={quantityInputValue}
         onChange={(event) => setQuantityInputValue(event.target.value)}
         onBlur={() => {
+          if (quantityInputIntegerValue > item.product.inventory) {
+            setQuantityInputValue(item.product.inventory.toString());
+
+            return toast.error(`Reached maximum quantity`);
+          }
+
           if (!quantityInputIntegerValue)
-            setQuantityInputValue(item.quantity.toString());
+            return setQuantityInputValue(item.quantity.toString());
         }}
         aria-label={`${item.product.title} quantity`}
       />
