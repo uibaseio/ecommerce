@@ -23,7 +23,7 @@ const CartItemQuantitySelector = ({ item }: CartItemQuantitySelectorProps) => {
   }, [quantityInputIntegerValue, handleUpdateItemQuantity, item]);
 
   return (
-    <div className="absolute top-0 bottom-0 right-0 flex items-center h-10 border rounded-lg lg:left-0 lg:right-auto">
+    <div className="absolute top-0 bottom-0 right-0 flex items-center h-10 lg:left-0 lg:right-auto">
       <button
         className="icon-button"
         type="button"

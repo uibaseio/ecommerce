@@ -7,7 +7,7 @@ const CartRemoveItemButton = ({ item }: CartRemoveItemButtonProps) => {
 
   return (
     <button
-      className="absolute top-0 bottom-0 text-red-600 -right-2 icon-button lg:static"
+      className="absolute top-0 bottom-0 right-0 text-red-600 icon-button"
       type="button"
       onClick={() => handleRemoveItem(item)}
       aria-label={`Remove ${item.product.title} from cart`}

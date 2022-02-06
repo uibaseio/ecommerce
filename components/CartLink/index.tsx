@@ -7,7 +7,7 @@ const CartLink = () => {
 
   return (
     <Link href="/cart">
-      <a className="relative -right-2 icon-button" aria-label="Cart">
+      <a className="relative icon-button" aria-label="Cart">
         <IoBagOutline size={20} />
         {quantity > 0 && (
           <div className="absolute flex items-center justify-center w-6 h-6 text-xs text-white rounded-full -top-1 -right-1 bg-primary-600">

@@ -7,7 +7,7 @@ const MobileNavigationButton = ({ open }: MobileNavigationButtonProps) => {
 
   return (
     <Popover.Button
-      className="relative -left-2 icon-button"
+      className="icon-button"
       aria-label={!open ? 'Open mobile navigation' : 'Close mobile navigation'}
     >
       {!open ? (
