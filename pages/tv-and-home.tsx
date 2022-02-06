@@ -1,23 +1,28 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Head from 'next/head';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, query, collection, where } from 'firebase/firestore';
 import type { ProductListingPageProps } from '../types';
 import { ProductList } from '../components';
 import { firestore } from '../lib/firebase';
 
-const Home: NextPage<ProductListingPageProps> = ({ products }) => (
+const TVAndHome: NextPage<ProductListingPageProps> = ({ products }) => (
   <>
     <Head>
-      <title>Home</title>
-      <meta name="description" content="Home" />
+      <title>TV &amp; Home</title>
+      <meta name="description" content="TVAndHome" />
     </Head>
-    <h1>Products</h1>
+    <h1>TV &amp; Home</h1>
     <ProductList products={products} />
   </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const querySnapshot = await getDocs(collection(firestore, 'products'));
+  const querySnapshot = await getDocs(
+    query(
+      collection(firestore, 'products'),
+      where('category', '==', 'TV & Home')
+    )
+  );
   const products = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -30,4 +35,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Home;
+export default TVAndHome;
